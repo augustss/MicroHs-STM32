@@ -25,8 +25,3 @@ ffs(int x)
   return 32 - i;                /* 31 leading zeros should return 1 */
 }
 #define FFS ffs
-
-void toggle_red_led(void) {
-  toggle_led(red_led);
-}
-

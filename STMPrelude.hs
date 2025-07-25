@@ -4,6 +4,7 @@ module STMPrelude(
   Int,
   IO,
   Ptr,
+  Num(..),
   module Data.List_Type, cycle,
   putChar, putStr, putStrLn,
   error,
@@ -15,10 +16,13 @@ import Data.Char_Type
 import Data.Eq
 import Data.Int
 import Data.List_Type
+import Data.Num
 import Foreign.Ptr
 import Mhs.Builtin
 import System.IO(IO)
 import System.IO.Unsafe
+
+default Num (Int)
 
 putStrLn :: String -> IO ()
 putStrLn s = putStr s >> putChar '\r' >> putChar '\n'

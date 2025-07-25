@@ -12,6 +12,7 @@
 #define WANT_TIME 0
 #define WANT_SIGINT 0
 #define WANT_ARGS 0
+#define WANT_TAGNAMES 0
 
 #define GCRED    0
 #define INTTABLE 1
@@ -20,8 +21,8 @@
 
 #define PACKED
 
-#define HEAP_CELLS 8000
-#define STACK_SIZE 500
+#define HEAP_CELLS 10000
+#define STACK_SIZE 100
 
 #include "stm32l5xx.h"
 #include "clock.h"
