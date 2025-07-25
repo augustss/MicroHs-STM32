@@ -33,4 +33,7 @@
 
 #define EXIT myexit
 
+#define ERR(s) myerr(s,"")
+#define ERR1(s, a) myerr(s,a)
+
 #endif /* CONFIG_H */

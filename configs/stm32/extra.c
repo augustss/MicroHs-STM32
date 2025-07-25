@@ -25,3 +25,22 @@ ffs(int x)
   return 32 - i;                /* 31 leading zeros should return 1 */
 }
 #define FFS ffs
+
+static void
+outstr(const char *s)
+{
+  while (*s)
+    lpuart1_write(*s++);
+}
+
+_Noreturn void
+myerr(const char *msg, const char *a)
+{
+  /* keep repeating message */
+  for(;;) {
+    outstr("ERR: ");
+    outstr(msg);
+    outstr(a);
+    outstr("\r\n");
+  }
+}
