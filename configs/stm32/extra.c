@@ -33,6 +33,14 @@ outstr(const char *s)
     lpuart1_write(*s++);
 }
 
+void
+outdec(uint64_t i)
+{
+  if (i >= 10)
+    outdec(i / 10);
+  lpuart1_write(i%10 + '0');
+}
+
 _Noreturn void
 myerr(const char *msg, const char *a)
 {
@@ -43,4 +51,24 @@ myerr(const char *msg, const char *a)
     outstr(a);
     outstr("\r\n");
   }
+}
+
+CLOCK_T CLOCK_GET(void)
+{
+  return (uint64_t)(ticks * 1000);
+}
+
+void
+sleepusec(uint64_t usec)
+{
+  //outstr("sleepusec ");
+  //outdec(usec);
+  //outstr("\r\n");
+  delay_ms((usec + 999) / 1000);
+}
+
+uintptr_t
+gettimemilli(void)
+{
+  return ticks;
 }

@@ -1,6 +1,7 @@
 module STMPrelude(
   module Mhs.Builtin,
   module Data.Eq,
+  module Data.Function,
   Int,
   IO,
   Ptr,
@@ -8,12 +9,14 @@ module STMPrelude(
   module Data.List_Type, cycle,
   putChar, putStr, putStrLn,
   error,
+  showInt,
   ) where
 --import qualified Prelude()
 import Control.Monad
 import Data.Char(ord)
 import Data.Char_Type
 import Data.Eq
+import Data.Function
 import Data.Int
 import Data.List_Type
 import Data.Num
@@ -43,3 +46,15 @@ cycle xs = let xs' = xs ++ xs' in xs'
 error :: String -> a
 error s = seq (unsafePerformIO (putStrLn s >> exit 1)) (boo ())
   where boo _ = boo ()
+
+showInt :: Int -> String
+showInt i =  if i < 10 then r else showInt (i `quot` 10) ++ r
+  where r = [chr (i `rem` 10 + ord '0')]
+
+chr :: Int -> Char
+chr = _primitive "chr"
+
+rem :: Int -> Int -> Int
+rem = _primitive "rem"
+quot :: Int -> Int -> Int
+quot = _primitive "quot"

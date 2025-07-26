@@ -14,7 +14,7 @@
 #define WANT_ARGS 0
 #define WANT_TAGNAMES 0
 
-#define GCRED    0
+#define GCRED    1
 #define INTTABLE 1
 #define SANITY   1
 #define STACKOVL 1
@@ -23,11 +23,13 @@
 
 #define HEAP_CELLS 10000
 #define STACK_SIZE 500
+#define SLICE 10000
 
 #include "stm32l5xx.h"
 #include "clock.h"
 #include "uart.h"
 #include "gpio.h"
+#include "timer.h"
 
 #define INITIALIZATION
 
@@ -35,5 +37,12 @@
 
 #define ERR(s) myerr(s,"")
 #define ERR1(s, a) myerr(s,a)
+
+#define GETTIMEMILLI gettimemilli
+
+#define CLOCK_INIT() do { } while(0)
+#define CLOCK_T int64_t
+#define CLOCK_GET clock_get
+#define CLOCK_SLEEP sleepusec
 
 #endif /* CONFIG_H */
