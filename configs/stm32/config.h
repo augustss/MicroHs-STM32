@@ -22,7 +22,7 @@
 #define PACKED
 
 #define HEAP_CELLS 10000
-#define STACK_SIZE 100
+#define STACK_SIZE 500
 
 #include "stm32l5xx.h"
 #include "clock.h"
