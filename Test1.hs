@@ -17,8 +17,15 @@ loop i = do
 
 ledLoop :: IO ()
 ledLoop = do
-  setLED red True
+  toggleLED red
   threadDelay 200_000
-  setLED red False
+  toggleLED blue
+  threadDelay 200_000
+  toggleLED green
   threadDelay 200_000
   ledLoop
+
+toggleLED :: LED -> IO ()
+toggleLED l = do
+  b <- getLED l
+  setLED l (not b)

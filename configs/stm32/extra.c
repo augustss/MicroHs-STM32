@@ -72,3 +72,23 @@ gettimemilli(void)
 {
   return ticks;
 }
+
+extern int _read(int fd, void *buf, int len);
+int read(int fd, void *buf, int len) {
+  return _read(fd, buf, len);
+}
+
+extern int _write(int fd, const void *buf, int len);
+int write(int fd, const void *buf, int len) {
+  return _write(fd, buf, len);
+}
+
+extern int _close(int fd);
+int close(int fd) {
+  return _close(fd);
+}
+
+extern int _open(const char *name, int flags, int mode);
+int open(const char *name, int flags, int mode) {
+  return _open(name, flags, mode);
+}

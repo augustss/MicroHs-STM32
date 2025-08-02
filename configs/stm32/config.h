@@ -2,6 +2,7 @@
 #define CONFIG_H
 
 #define WANT_STDIO 0
+#define WANT_FD 1
 #define WANT_FLOAT32 1
 #define WANT_FLOAT64 0
 #define WANT_MATH 0
@@ -16,7 +17,7 @@
 
 #define GCRED    1
 #define INTTABLE 1
-#define SANITY   1
+#define SANITY   0
 #define STACKOVL 1
 
 #define PACKED
