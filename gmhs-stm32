@@ -1,0 +1,6 @@
+STMDIR=../stm32-nucleo/
+export MHSDIR=../MicroHS
+export CC="arm-none-eabi-gcc"
+export MHSCCFLAGS="-mcpu=cortex-m33 -mthumb --specs=nano.specs -DSTM32L552xx -Iconfigs/stm32 -I${STMDIR}CMSIS/Device/ST/STM32L5/Include -I${STMDIR}CMSIS/CMSIS/Core/Include -I${STMDIR}robos/include -T ${STMDIR}linker_script.ld ${STMDIR}robos/src/*.c"
+export MHSCONF=stm32
+${MHSDIR}/bin/gmhs -tenvironment -i -imicro-lib -i${MHSDIR}/lib -i. $*

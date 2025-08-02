@@ -1,0 +1,15 @@
+module Control.Error(error, errorWithoutStackTrace, undefined) where
+import qualified Prelude()              -- do not import Prelude
+import Primitives
+import Data.Char_Type
+import STM32.LowLevel
+
+error :: forall a . String -> a
+error s = primUnsafeCoerce (primPerformIO (uPutStr "error: " `primThen` uPutStrLn s `primThen` exit (1::Int)))
+
+undefined :: forall a . a
+undefined = error "undefined"
+
+-- GHC compatibility
+errorWithoutStackTrace :: forall a . String -> a
+errorWithoutStackTrace = error

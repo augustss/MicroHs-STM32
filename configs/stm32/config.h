@@ -12,7 +12,7 @@
 #define WANT_TIME 0
 #define WANT_SIGINT 0
 #define WANT_ARGS 0
-#define WANT_TAGNAMES 0
+#define WANT_TAGNAMES 1
 
 #define GCRED    1
 #define INTTABLE 1
